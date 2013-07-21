@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<link rel="shortcut icon" href="images/content/favicon.html" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="" />
+<meta name="title" content="" />
+<meta name="description" content="" />
+<title>Quick Host</title>
+<link rel="shortcut icon" href="images/favicon.html" />
+<!-- ////////////////////////////////// -->
+<!-- //      Start Stylesheets       // -->
+<!-- ////////////////////////////////// -->
+<link href="styles/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="styles/inner.css" rel="stylesheet" type="text/css" media="screen" />
+
+
+<!-- ////////////////////////////////// -->
+<!-- //      Javascript Files        // -->
+<!-- ////////////////////////////////// -->
+<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/hoverIntent.js"></script> 
+<script type="text/javascript" src="js/superfish.js"></script> 
+<script type="text/javascript" src="js/supersubs.js"></script> 
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	
+	//Menu
+	jQuery("ul.sf-menu").supersubs({ 
+	minWidth		: 9,		// requires em unit.
+	maxWidth		: 25,		// requires em unit.
+	extraWidth		: 0			// extra width can ensure lines don't sometimes turn over due to slight browser differences in how they round-off values
+						   // due to slight rounding differences and font-family 
+	}).superfish();  // call supersubs first, then superfish, so that subs are 
+					 // not display:none when measuring. Call before initialising 
+					 // containing tabs for same reason. 
+
+});
+
+</script>
+
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="bg-gray">
+    	<div class="light"></div>
+    </div>
+	<div id="main-frame">
+    
+        <div id="top">
+            <div id="logo">
+                <a href="index.html"><img src="images/logo.png" alt="" /></a>            
+            </div><!--#logo-->
+			<div id="topsearch">
+				<form action="#" method="post">
+					<div><input type="text" class="inputbox" /><input type="submit" value="Search" class="button" /></div>
+				</form>
+			</div><!-- end #topsearch -->
+            <div class="clearfix"></div>
+        </div><!--#top-->
+        
+        <div id="frame" class="inner">
+		<div id="header">
+            <div id="nav">
+            	<div class="container">
+                <ul id="topnav" class="sf-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Hosting</a>
+                        <ul>
+                          <li><a href="pricingbox.html">Pricing Box</a></li>
+                          <li><a href="pricingtable.html">Pricing Table</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="blog.html"  class="current">Blog</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="typography.html">Typography</a></li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                </ul><!-- #topnav -->
+                </div>
+            </div><!--#nav-->
+        
+            <div class="clearfix"></div>
+            
+		</div><!--#header-->
+        
+        <div class="container">
+    		<div class="twelve columns">
+                <div class="eight columns content alpha">
+                    <h2>Our Blog</h2>
+                    <div class="post">
+                    	<div class="date">Thursday, 1 December 2011  9:59am</div>
+                        <h2 class="posttitle"><a href="single.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h2>
+                        <div class="entry-utility">Written by <a href="#">Administrator</a></div>
+                        <div class="entry-content">
+                            <img src="images/content/post1.jpg" alt="" />
+                            <p>Nunc dictum eros nec arcu interdum quis auctor eros varius. In at felis sit amet nisi ornare porta eget a mauris. Duis laoreet ligula eget justo faucibus rhoncus. Nulla lorem purus, malesuada quis pulvinar sit amet, porta quis erat. Duis eget auctor erat. </p>
+                            <a href="single.html" class="more">Read More</a>
+                        </div>
+                    </div><!-- .post -->
+                    
+                    <div class="post">
+                    	<div class="date">Thursday, 1 December 2011  9:59am</div>
+                        <h2 class="posttitle"><a href="single.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h2>
+                        <div class="entry-utility">Written by <a href="#">Administrator</a></div>
+                        <div class="entry-content">
+                            <img src="images/content/post2.jpg" alt="" />
+                            <p>Nunc dictum eros nec arcu interdum quis auctor eros varius. In at felis sit amet nisi ornare porta eget a mauris. Duis laoreet ligula eget justo faucibus rhoncus. Nulla lorem purus, malesuada quis pulvinar sit amet, porta quis erat. Duis eget auctor erat. </p>
+                            <a href="single.html" class="more">Read More</a>
+                        </div>
+                    </div><!-- .post -->
+                    
+                    <div class="post noborder">
+                    	<div class="date">Thursday, 1 December 2011  9:59am</div>
+                        <h2 class="posttitle"><a href="single.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h2>
+                        <div class="entry-utility">Written by <a href="#">Administrator</a></div>
+                        <div class="entry-content">
+                            <img src="images/content/post3.jpg" alt="" />
+                            <p>Nunc dictum eros nec arcu interdum quis auctor eros varius. In at felis sit amet nisi ornare porta eget a mauris. Duis laoreet ligula eget justo faucibus rhoncus. Nulla lorem purus, malesuada quis pulvinar sit amet, porta quis erat. Duis eget auctor erat. </p>
+                            <a href="single.html" class="more">Read More</a>
+                        </div>
+                    </div><!-- .post -->
+
+                    <div class="pagenavi">
+                        <div class="pages-left">Page 1 of 3</div><div class="pages-right"><a href="#" class="page">1</a>&nbsp;|&nbsp;<span class="current">2</span>&nbsp;|&nbsp;<a href="#" class="page">3</a></div>
+                    	<div class="clearfix"></div>
+                    </div><!-- end pagenavi -->
+
+                </div><!-- .eight.columns -->
+                
+                <div class="four columns sidebar omega">
+                    <ul>
+                        <li class="widget-container">
+                            <h2 class="widget-title">Categories</h2>
+                            <ul>
+                            	<li><a href="#">Domain Privacy</a></li>
+                                <li><a href="#">Easy Domain Transfers</a></li>
+                                <li><a href="#">Advanced DNS Control</a></li>
+                                <li><a href="#">Personalized Email</a></li>
+                                <li><a href="#">Unlimited Bandwidth</a></li>
+                                <li><a href="#">Remote Server Control</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="widget-container">
+                            <h2 class="widget-title">What’s New</h2>
+                            <div class="newpost">
+                            	<img src="images/content/pic-sidebar.jpg" alt="" class="aligncenter" />
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at accumsan dolor. Etiam id condimentum dui. </p>
+                                <a href="single.html" class="more">Read More</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="widget-container testiwidget">
+                            <h2>Client’s Say...</h2>
+                            <ul>
+                            <li>Donec facilisis quam ac ipsum dapibus gravida non a justo. Fusce mollis risus ut dolor pretium accumsan. </li>
+                            </ul>
+                            <p>Jessica Lewis</p>
+                        </li>
+                    </ul>
+                </div><!-- .four.columns -->
+            </div><!-- .twelve.columns -->
+            <div class="clearfix"></div>
+        </div><!--container-->
+	</div>
+	</div>
+    
+	<div id="wrapper-footer">
+        <div id="banner-footer">
+			<div class="container">
+            	<div class="twelve columns">
+            	<img src="images/icons/icon-logo1.png" alt=""  />
+                <img src="images/icons/icon-logo2.png" alt=""  />
+                <img src="images/icons/icon-logo3.png" alt=""  />
+                <img src="images/icons/icon-logo4.png" alt=""  />
+                <img src="images/icons/icon-logo5.png" alt=""  />
+                <img src="images/icons/icon-logo6.png" alt=""  />
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+		<div class="container">
+        	<div class="twelve columns footer">
+				<div class="three columns alpha">
+                    <ul>
+                        <li class="widget-container">
+                        <h2 class="widget-title">Web Hosting</h2>
+                        <ul>
+                            <li><a href="#">Domain Names</a></li>
+                            <li><a href="#">Windows Web Hosting</a></li>
+                            <li><a href="#">Dedicated Services</a></li>
+                            <li><a href="#">Reseller Hosting</a></li>
+                            <li><a href="#">Linux Web Hosting</a></li>
+                            <li><a href="#">Windows Web Hosting</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+				</div>
+				<div class="three columns">
+                    <ul>
+                        <li class="widget-container">
+                        <h2 class="widget-title">Support</h2>
+                        <ul>
+                            <li><a href="#">Client Area</a></li>
+                            <li><a href="#">Support Request</a></li>
+                            <li><a href="#">Knowledge Base</a></li>
+                            <li><a href="#">Flash Tutorial</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+				</div>
+				<div class="three columns">
+                    <ul>
+                        <li class="widget-container">
+                        <h2 class="widget-title">Our Company</h2>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Affiliate Programs</a></li>
+                            <li><a href="#">What’s New</a></li>
+                            <li><a href="#">Our Infrastructure</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+				</div>
+				<div class="three columns omega">
+                    <ul>
+                        <li class="widget-container contact">
+                        <h2 class="widget-title">Web Solution</h2>
+                        <ul>
+                            <li><a href="#">Web Solutions Overview</a></li>
+                            <li><a href="#">Email Marketing</a></li>
+                            <li><a href="#">Website Promotion</a></li>
+                            <li><a href="#">SSL Certificates</a></li>
+                            <li><a href="#">eCommerce Website</a></li>
+                            <li><a href="#">Web Hosting Design</a></li>
+                        </ul>
+                        
+                        </li>
+                    </ul>
+				</div>
+                <div class="clearfix"></div>   
+                <div id="copyright">
+                    Copyright ©2011 Quick Hosting.  Design by <a href="http://www.templatesquare.com/">Templatesquare.com</a>
+                </div><!--#footer-->
+                
+        	</div><!--.twelve.columns-->
+		</div><!--container-->
+    	<div class="clearfix"></div>
+	</div><!--#wrapper-footer-->
+    
+</div><!-- end #wrapper -->	
+
+</body>
+</html>

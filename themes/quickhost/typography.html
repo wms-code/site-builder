@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<link rel="shortcut icon" href="images/content/favicon.html" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="" />
+<meta name="title" content="" />
+<meta name="description" content="" />
+<title>Quick Host</title>
+<link rel="shortcut icon" href="images/favicon.html" />
+<!-- ////////////////////////////////// -->
+<!-- //      Start Stylesheets       // -->
+<!-- ////////////////////////////////// -->
+<link href="styles/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="styles/inner.css" rel="stylesheet" type="text/css" media="screen" />
+
+
+<!-- ////////////////////////////////// -->
+<!-- //      Javascript Files        // -->
+<!-- ////////////////////////////////// -->
+<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/hoverIntent.js"></script> 
+<script type="text/javascript" src="js/superfish.js"></script> 
+<script type="text/javascript" src="js/supersubs.js"></script> 
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	
+	//Menu
+	jQuery("ul.sf-menu").supersubs({ 
+	minWidth		: 9,		// requires em unit.
+	maxWidth		: 25,		// requires em unit.
+	extraWidth		: 0			// extra width can ensure lines don't sometimes turn over due to slight browser differences in how they round-off values
+						   // due to slight rounding differences and font-family 
+	}).superfish();  // call supersubs first, then superfish, so that subs are 
+					 // not display:none when measuring. Call before initialising 
+					 // containing tabs for same reason. 
+
+});
+
+</script>
+
+</head>
+<body>
+
+<div id="wrapper">
+<span id="sharptop"></span>
+	<div id="bg-gray">
+    	<div class="light"></div>
+    </div>
+	<div id="main-frame">
+    
+        <div id="top">
+            <div id="logo">
+                <a href="index.html"><img src="images/logo.png" alt="" /></a>            
+            </div><!--#logo-->
+			<div id="topsearch">
+				<form action="#" method="post">
+					<div><input type="text" class="inputbox" /><input type="submit" value="Search" class="button" /></div>
+				</form>
+			</div><!-- end #topsearch -->
+            <div class="clearfix"></div>
+        </div><!--#top-->
+        
+        <div id="frame" class="inner">
+		<div id="header">
+            <div id="nav">
+            	<div class="container">
+                <ul id="topnav" class="sf-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Hosting</a>
+                        <ul>
+                          <li><a href="pricingbox.html">Pricing Box</a></li>
+                          <li><a href="pricingtable.html">Pricing Table</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="typography.html"  class="current">Typography</a></li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                </ul><!-- #topnav -->
+                </div>
+            </div><!--#nav-->
+        
+            <div class="clearfix"></div>
+            
+		</div><!--#header-->
+        
+        <div class="container">
+    		<div class="twelve columns content">
+				<h2>Typography</h2>
+<p>Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.</p>
+<p>Vivamus placerat cursus lorem, id mollis enim cursus quis. Pellentesque ac tortor ac quam hendrerit pharetra. Integer turpis eros, vulputate et pellentesque rhoncus, tincidunt sodales est. Aliquam volutpat egestas leo vitae pretium. Sed et urna nisi, aliquet faucibus magna.</p>
+                <div class="one_half">
+                    <h1>This is H1 tag</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id leo sem. In non eros viverra orci consequat sagittis sed sed lectus. Mauris tempus eleifend elit, ut fringilla nunc commodo sed. Nunc quam nunc, auctor id fringilla ut, faucibus euismod felis. Phasellus in est diam. Ut dolor neque, luctus ut laoreet non, dictum non diam. Donec lectus tortor, facilisis et dignissim vel, fringilla nec magna.</p>
+                </div>
+                <div class="one_half last">
+                    <h2>This is H2 tag</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id leo sem. In non eros viverra orci consequat sagittis sed sed lectus. Mauris tempus eleifend elit, ut fringilla nunc commodo sed. Nunc quam nunc, auctor id fringilla ut, faucibus euismod felis. Phasellus in est diam. Ut dolor neque, luctus ut laoreet non, dictum non diam. Donec lectus tortor, facilisis et dignissim vel, fringilla nec magna.</p>
+                </div>
+                
+                <hr class="sparator"/>
+
+                <div class="one_third">
+                <h3>This is H3 tag</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id leo sem. In non eros viverra orci consequat sagittis sed sed lectus. Mauris tempus eleifend elit, ut fringilla nunc commodo sed. Nunc quam nunc, auctor id fringilla ut, faucibus euismod felis. Phasellus in est diam. Ut dolor neque, luctus ut laoreet non, dictum non diam.</p>
+                </div>
+                <div class="one_third">
+                <h4>This is H4 tag</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id leo sem. In non eros viverra orci consequat sagittis sed sed lectus. Mauris tempus eleifend elit, ut fringilla nunc commodo sed. Nunc quam nunc, auctor id fringilla ut, faucibus euismod felis. Phasellus in est diam. Ut dolor neque, luctus ut laoreet non, dictum non diam.</p>
+                </div>
+                <div class="one_third last">
+                <h5>This is H5 tag</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id leo sem. In non eros viverra orci consequat sagittis sed sed lectus. Mauris tempus eleifend elit, ut fringilla nunc commodo sed. Nunc quam nunc, auctor id fringilla ut, faucibus euismod felis. Phasellus in est diam. Ut dolor neque, luctus ut laoreet non, dictum non diam.</p>
+                </div>
+                
+				<hr class="sparator"/>
+                
+                <div class="one_fourth">
+                <h5>Content with dropcaps</h5>
+                <p><span class="dropcap1">A</span>orem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id leo sem. In non eros viverra orci consequat sagittis sed sed lectus. Mauris tempus eleifend elit, ut fringilla nunc commodo sed.</p>
+                </div>
+                <div class="one_fourth">
+                <h5>Content with dropcaps</h5>
+                <p><span class="dropcap1">B</span>orem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id leo sem. In non eros viverra orci consequat sagittis sed sed lectus. Mauris tempus eleifend elit, ut fringilla nunc commodo sed.</p>
+                </div>
+                <div class="one_fourth">
+                <h5>Content with dropcaps</h5>
+                <p><span class="dropcap1">C</span>orem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id leo sem. In non eros viverra orci consequat sagittis sed sed lectus. Mauris tempus eleifend elit, ut fringilla nunc commodo sed.</p>
+                </div>
+                <div class="one_fourth last">
+                <h5>Content with dropcaps</h5>
+                <p><span class="dropcap1">D</span>orem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id leo sem. In non eros viverra orci consequat sagittis sed sed lectus. Mauris tempus eleifend elit, ut fringilla nunc commodo sed.</p>
+                </div>
+
+<hr/>
+
+<h4>Pullquotes &amp; Blockquotes</h4>
+
+<span class="pullquote-right">This is a pullquote right. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. </span>
+<p>This is a blockquote. Donec iaculis mollis mauris. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.Nullam dignissim convallis est.</p>
+<p>Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus.</p>
+<span class="pullquote-left">This is pullquote left. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.</span>
+<p>Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.</p>
+<p>Vivamus placerat cursus lorem, id mollis enim cursus quis. Pellentesque ac tortor ac quam hendrerit pharetra. Integer turpis eros, vulputate et pellentesque rhoncus, tincidunt sodales est. Aliquam volutpat egestas leo vitae pretium. Sed et urna nisi, aliquet faucibus magna.</p>
+<blockquote>This is Blockquote. Sed iaculis, purus quis imperdiet laoreet, dui arcu vulputate urna, non molestie enim tellus a metus. Pellentesque ac tortor ac quam hendrerit pharetra.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dignissim convallis est.</p>
+</blockquote>
+<p>Vivamus placerat cursus lorem, id mollis enim cursus quis. Pellentesque ac tortor ac quam hendrerit pharetra. Integer turpis eros, vulputate et pellentesque rhoncus, tincidunt sodales est. Aliquam volutpat egestas leo vitae pretium. Sed et urna nisi, aliquet faucibus magna.</p>
+
+<hr/>
+
+<h4>Highlight Text</h4>
+<span class="highlight1">This is a highlight1 span class</span> Quisque gravida porttitor sodales. Mauris odio orci, vestibulum quis condimentum ac, vestibulum quis ipsum. Vivamus vulputate, metus non pulvinar commodo, enim odio tincidunt nunc, vel luctus mauris massa aliquet magna. Morbi eros enim, tempor scelerisque dignissim id, hendrerit pulvinar tortor.</p>
+<p>Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. <span class="highlight2">This is a highlight2 span class.</span> tincidunt nec, gravida vehicula, nisl. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.</p>
+
+<hr/>
+
+<h4>Dropcaps</h4>
+<p><span class="dropcap1">A</span>orem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. This is a blockquote. Aenean arcu elit, tristique semper pulvinar adipiscing. Donec faucibus. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus.</p>
+
+<p>Aesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy.</p>
+					
+					<a href="#sharptop" class="backtop">back to top</a>
+					
+					<div class="clearfix"></div>
+
+
+            </div><!-- .twelve.columns -->
+            <div class="clearfix"></div>
+        </div><!--container-->
+	</div>
+	</div>
+    
+	<div id="wrapper-footer">
+        <div id="banner-footer">
+			<div class="container">
+            	<div class="twelve columns">
+            	<img src="images/icons/icon-logo1.png" alt=""  />
+                <img src="images/icons/icon-logo2.png" alt=""  />
+                <img src="images/icons/icon-logo3.png" alt=""  />
+                <img src="images/icons/icon-logo4.png" alt=""  />
+                <img src="images/icons/icon-logo5.png" alt=""  />
+                <img src="images/icons/icon-logo6.png" alt=""  />
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+		<div class="container">
+        	<div class="twelve columns footer">
+				<div class="three columns alpha">
+                    <ul>
+                        <li class="widget-container">
+                        <h2 class="widget-title">Web Hosting</h2>
+                        <ul>
+                            <li><a href="#">Domain Names</a></li>
+                            <li><a href="#">Windows Web Hosting</a></li>
+                            <li><a href="#">Dedicated Services</a></li>
+                            <li><a href="#">Reseller Hosting</a></li>
+                            <li><a href="#">Linux Web Hosting</a></li>
+                            <li><a href="#">Windows Web Hosting</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+				</div>
+				<div class="three columns">
+                    <ul>
+                        <li class="widget-container">
+                        <h2 class="widget-title">Support</h2>
+                        <ul>
+                            <li><a href="#">Client Area</a></li>
+                            <li><a href="#">Support Request</a></li>
+                            <li><a href="#">Knowledge Base</a></li>
+                            <li><a href="#">Flash Tutorial</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+				</div>
+				<div class="three columns">
+                    <ul>
+                        <li class="widget-container">
+                        <h2 class="widget-title">Our Company</h2>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Affiliate Programs</a></li>
+                            <li><a href="#">What’s New</a></li>
+                            <li><a href="#">Our Infrastructure</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+				</div>
+				<div class="three columns omega">
+                    <ul>
+                        <li class="widget-container contact">
+                        <h2 class="widget-title">Web Solution</h2>
+                        <ul>
+                            <li><a href="#">Web Solutions Overview</a></li>
+                            <li><a href="#">Email Marketing</a></li>
+                            <li><a href="#">Website Promotion</a></li>
+                            <li><a href="#">SSL Certificates</a></li>
+                            <li><a href="#">eCommerce Website</a></li>
+                            <li><a href="#">Web Hosting Design</a></li>
+                        </ul>
+                        
+                        </li>
+                    </ul>
+				</div>
+                <div class="clearfix"></div>   
+                <div id="copyright">
+                    Copyright ©2011 Quick Hosting.  Design by <a href="http://www.templatesquare.com/">Templatesquare.com</a>
+                </div><!--#footer-->
+                
+        	</div><!--.twelve.columns-->
+		</div><!--container-->
+    	<div class="clearfix"></div>
+	</div><!--#wrapper-footer-->
+    
+</div><!-- end #wrapper -->	
+
+</body>
+</html>

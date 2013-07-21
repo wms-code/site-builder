@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<link rel="shortcut icon" href="images/content/favicon.html" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="" />
+<meta name="title" content="" />
+<meta name="description" content="" />
+<title>Quick Host</title>
+<link rel="shortcut icon" href="images/favicon.html" />
+<!-- ////////////////////////////////// -->
+<!-- //      Start Stylesheets       // -->
+<!-- ////////////////////////////////// -->
+<link href="styles/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="styles/inner.css" rel="stylesheet" type="text/css" media="screen" />
+
+
+<!-- ////////////////////////////////// -->
+<!-- //      Javascript Files        // -->
+<!-- ////////////////////////////////// -->
+<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/hoverIntent.js"></script> 
+<script type="text/javascript" src="js/superfish.js"></script> 
+<script type="text/javascript" src="js/supersubs.js"></script> 
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	
+	//Menu
+	jQuery("ul.sf-menu").supersubs({ 
+	minWidth		: 9,		// requires em unit.
+	maxWidth		: 25,		// requires em unit.
+	extraWidth		: 0			// extra width can ensure lines don't sometimes turn over due to slight browser differences in how they round-off values
+						   // due to slight rounding differences and font-family 
+	}).superfish();  // call supersubs first, then superfish, so that subs are 
+					 // not display:none when measuring. Call before initialising 
+					 // containing tabs for same reason. 
+	/* Toggle */
+	jQuery(".toggle_container").hide();
+	jQuery("div.trigger").click(function(){
+		jQuery(this).toggleClass("active").next().slideToggle("slow");
+	});
+	
+});
+
+</script>
+
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="bg-gray">
+    	<div class="light"></div>
+    </div>
+	<div id="main-frame">
+    
+        <div id="top">
+            <div id="logo">
+                <a href="index.html"><img src="images/logo.png" alt="" /></a>            
+            </div><!--#logo-->
+			<div id="topsearch">
+				<form action="#" method="post">
+					<div><input type="text" class="inputbox" /><input type="submit" value="Search" class="button" /></div>
+				</form>
+			</div><!-- end #topsearch -->
+            <div class="clearfix"></div>
+        </div><!--#top-->
+        
+        <div id="frame" class="inner">
+		<div id="header">
+            <div id="nav">
+            	<div class="container">
+                <ul id="topnav" class="sf-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Hosting</a>
+                        <ul>
+                          <li><a href="pricingbox.html">Pricing Box</a></li>
+                          <li><a href="pricingtable.html">Pricing Table</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="faq.html"  class="current">FAQs</a></li>
+                    <li><a href="typography.html">Typography</a></li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                </ul><!-- #topnav -->
+                </div>
+            </div><!--#nav-->
+        
+            <div class="clearfix"></div>
+            
+		</div><!--#header-->
+        
+        <div class="container">
+    		<div class="twelve columns">
+                <div class="eight columns content alpha">
+                    <h2>FAQs</h2>
+                    <div id="toggle">
+                        <div class="trigger first"><span>Title Goes Here #1</span></div>
+                        <div class="toggle_container">
+                            <div class="block">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan eleifend leo ut tincidunt. Nunc posuere urna sed turpis posuere tempus. Nullam iaculis massa ut tellus molestie ornare. Nulla vel mauris felis. Vestibulum felis lorem, porttitor ac venenatis non, iaculis eu felis. Quisque in turpis sapien, dapibus tempus lectus. </p>
+
+<p>In sit amet vestibulum lacus. Aliquam ullamcorper dapibus tempus. Duis sed leo sed dui gravida sagittis. Suspendisse potenti.</p>
+
+<p>Quisque fringilla lectus eget libero ullamcorper accumsan. Integer malesuada malesuada eros, in dapibus urna bibendum eget. Donec nisi erat, imperdiet eu lobortis non, dapibus eget nisi. Aenean eu mi eu nibh fermentum scelerisque. Donec faucibus, mi iaculis feugiat laoreet, nisl turpis volutpat erat, non bibendum justo arcu ac lacus.</p> 
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trigger"><span>Title Goes Here #2</span></div>
+                    
+                        <div class="toggle_container">
+                            <div class="block">
+                                <h3>Need a Logo?</h3>
+                                <p>Consequat te olim letalis premo ad hos olim odio olim indoles ut venio iusto. Euismod, sagaciter diam neque antehabeo blandit, jumentum transverbero luptatum. Lenis vel diam praemitto molior facilisi facilisi suscipere abico, ludus, at. Wisi suscipere nisl ad capto comis esse, autem genitus. Feugiat immitto ullamcorper hos luptatum gilvus eum. Delenit patria nunc os pneum acsi nulla magna singularis proprius autem exerci accumsan. </p>
+                                
+                                <p>Praesent duis vel similis usitas camur, nostrud eros opes verto epulae feugiat ad. Suscipit modo magna letalis amet et tego accumsan facilisi, meus. Vindico luptatum blandit ulciscor mos caecus praesent sed meus velit si quis lobortis praemitto, uxor. </p>
+                            </div>
+                    
+                        </div>
+                        
+                        <div class="trigger"><span>Title Goes Here #3</span></div>
+                        <div class="toggle_container">
+                            <div class="block">
+                                <h3>Need to be Heard?</h3>
+                                <p>Consequat te olim letalis premo ad hos olim odio olim indoles ut venio iusto. Euismod, sagaciter diam neque antehabeo blandit, jumentum transverbero luptatum. Lenis vel diam praemitto molior facilisi facilisi suscipere abico, ludus, at. Wisi suscipere nisl ad capto comis esse, autem genitus. Feugiat immitto ullamcorper hos luptatum gilvus eum. Delenit patria nunc os pneum acsi nulla magna singularis proprius autem exerci accumsan. </p>
+                    
+                                
+                                <p>Praesent duis vel similis usitas camur, nostrud eros opes verto epulae feugiat ad. Suscipit modo magna letalis amet et tego accumsan facilisi, meus. Vindico luptatum blandit ulciscor mos caecus praesent sed meus velit si quis lobortis praemitto, uxor. </p>
+                            </div>
+                        </div>
+
+                        <div class="trigger"><span>Title Goes Here #4</span></div>
+                        <div class="toggle_container">
+                            <div class="block">
+                               <h3>Consequat te olim letalis premo ad hos olim odio olim indoles ut venio iusto.</h3>
+                               <img src="images/content/pic-service.jpg" alt="" class="alignleft" />
+                                <p>Euismod, sagaciter diam neque antehabeo blandit, jumentum transverbero luptatum. Lenis vel diam praemitto molior facilisi facilisi suscipere abico, ludus, at. Wisi suscipere nisl ad capto comis esse, autem genitus. Feugiat immitto ullamcorper hos luptatum gilvus eum. Delenit patria nunc os pneum acsi nulla magna singularis proprius autem exerci accumsan. </p>
+                    
+                                
+                                <p>Praesent duis vel similis usitas camur, nostrud eros opes verto epulae feugiat ad. Suscipit modo magna letalis amet et tego accumsan facilisi, meus. Vindico luptatum blandit ulciscor mos caecus praesent sed meus velit si quis lobortis praemitto, uxor. </p>
+                            </div>
+                        </div>
+
+                    </div><!-- end #toggle -->
+                </div><!-- .eight.columns -->
+                
+                <div class="four columns sidebar omega">
+                    <ul>
+                        <li class="widget-container">
+                            <h2 class="widget-title">Categories</h2>
+                            <ul>
+                            	<li><a href="#">Domain Privacy</a></li>
+                                <li><a href="#">Easy Domain Transfers</a></li>
+                                <li><a href="#">Advanced DNS Control</a></li>
+                                <li><a href="#">Personalized Email</a></li>
+                                <li><a href="#">Unlimited Bandwidth</a></li>
+                                <li><a href="#">Remote Server Control</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="widget-container">
+                            <h2 class="widget-title">About Us</h2>
+                            <ul>
+                                <li><a href="#">Who are We</a></li>
+                                <li><a href="#">Vision and Mission</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Management Team</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="widget-container newsletter">
+                            <h2>Newsletter</h2>
+							<form method="post" action="#" id="subscribe">
+								<div><input type="text"  class="inputbox" size="40"  value="Enter your email" onblur="if (this.value == ''){this.value = 'Enter your email'; }" onfocus="if (this.value == 'Enter your email') {this.value = ''; }" /><input type="submit" value="Subscribe" class="button" /></div>
+							</form>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="widget-container">
+                            <h2 class="widget-title">Brochure Download</h2>
+                            <div class="one column alpha"><img src="images/icons/icon-pdf.png" alt="" class="alignright" /></div>
+                            <div class="three columns omega"><a href="#">Download our<br />
+                            Services Brochure</a></div>
+                            <div class="clearfix"></div>
+                      
+                        </li>
+                    </ul>
+                </div><!-- .four.columns -->
+            </div><!-- .twelve.columns -->
+            <div class="clearfix"></div>
+        </div><!--container-->
+	</div>
+	</div>
+    
+	<div id="wrapper-footer">
+        <div id="banner-footer">
+			<div class="container">
+            	<div class="twelve columns">
+            	<img src="images/icons/icon-logo1.png" alt=""  />
+                <img src="images/icons/icon-logo2.png" alt=""  />
+                <img src="images/icons/icon-logo3.png" alt=""  />
+                <img src="images/icons/icon-logo4.png" alt=""  />
+                <img src="images/icons/icon-logo5.png" alt=""  />
+                <img src="images/icons/icon-logo6.png" alt=""  />
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+		<div class="container">
+        	<div class="twelve columns footer">
+				<div class="three columns alpha">
+                    <ul>
+                        <li class="widget-container">
+                        <h2 class="widget-title">Web Hosting</h2>
+                        <ul>
+                            <li><a href="#">Domain Names</a></li>
+                            <li><a href="#">Windows Web Hosting</a></li>
+                            <li><a href="#">Dedicated Services</a></li>
+                            <li><a href="#">Reseller Hosting</a></li>
+                            <li><a href="#">Linux Web Hosting</a></li>
+                            <li><a href="#">Windows Web Hosting</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+				</div>
+				<div class="three columns">
+                    <ul>
+                        <li class="widget-container">
+                        <h2 class="widget-title">Support</h2>
+                        <ul>
+                            <li><a href="#">Client Area</a></li>
+                            <li><a href="#">Support Request</a></li>
+                            <li><a href="#">Knowledge Base</a></li>
+                            <li><a href="#">Flash Tutorial</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+				</div>
+				<div class="three columns">
+                    <ul>
+                        <li class="widget-container">
+                        <h2 class="widget-title">Our Company</h2>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Affiliate Programs</a></li>
+                            <li><a href="#">What’s New</a></li>
+                            <li><a href="#">Our Infrastructure</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+				</div>
+				<div class="three columns omega">
+                    <ul>
+                        <li class="widget-container contact">
+                        <h2 class="widget-title">Web Solution</h2>
+                        <ul>
+                            <li><a href="#">Web Solutions Overview</a></li>
+                            <li><a href="#">Email Marketing</a></li>
+                            <li><a href="#">Website Promotion</a></li>
+                            <li><a href="#">SSL Certificates</a></li>
+                            <li><a href="#">eCommerce Website</a></li>
+                            <li><a href="#">Web Hosting Design</a></li>
+                        </ul>
+                        
+                        </li>
+                    </ul>
+				</div>
+                <div class="clearfix"></div>   
+                <div id="copyright">
+                    Copyright ©2011 Quick Hosting.  Design by <a href="http://www.templatesquare.com/">Templatesquare.com</a>
+                </div><!--#footer-->
+                
+        	</div><!--.twelve.columns-->
+		</div><!--container-->
+    	<div class="clearfix"></div>
+	</div><!--#wrapper-footer-->
+    
+</div><!-- end #wrapper -->	
+
+</body>
+</html>

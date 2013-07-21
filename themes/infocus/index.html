@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>DreamTemplate</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/easySlider1.5.js"></script>
+<script type="text/javascript" src="js/jquery.scrollTo-min.js"></script>
+<script type="text/javascript" src="js/jquery.scrollShow.js"></script>
+<script type="text/javascript">
+// <![CDATA[
+jQuery(function( $ ){
+	//borrowed from jQuery easing plugin
+	//http://gsgd.co.uk/sandbox/jquery.easing.php
+	$.easing.backout = function(x, t, b, c, d){
+		var s=1.70158;
+		return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+	};
+	$('#screen').scrollShow({
+		view:'#view',
+		content:'#images',
+		easing:'backout',
+		wrappers:'crop',
+		navigators:'a[id]',
+		navigationMode:'sr',
+		circular:true,
+		start:0,
+		itemSize:{
+			height:103,
+			width:184
+		}
+	});
+});
+$(document).ready(function(){	
+	$("#slider").easySlider({
+		controlsBefore:	'<p id="controls">',
+		controlsAfter:	'</p>',
+		auto: true, 
+		continuous: true
+	});	
+});
+// ]]>
+</script>
+<style type="text/css">
+.gallery { width:925px; height:218px; margin:0 auto; padding:10px 0 0 0; }
+#slider { margin:0; padding:0; list-style:none; }
+#slider ul,
+#slider li { margin:0; padding:0; list-style:none; }
+/* 
+    define width and height of list item (slide)
+    entire slider area will adjust according to the parameters provided here
+*/
+#slider li { width:925px; height:218px; overflow:hidden; }
+p#controls { margin:0; position:relative; }
+#prevBtn { display:block; margin:0; overflow:hidden; width:22px; height:22px; position:absolute; left:-28px; top:-151px; }
+#nextBtn { display:block; margin:0; overflow:hidden; width:22px; height:22px; position:absolute; left: 933px; top:-151px; }
+#prevBtn a { display:block; width:22px; height:22px; background:url(images/l_arrow.gif) no-repeat 0 0; }
+#nextBtn a { display:block; width:22px; height:22px; background:url(images/r_arrow.gif) no-repeat 0 0; }
+</style>
+</head>
+<body>
+<div class="main">
+  <div class="header_bg">
+    <div class="header">
+      <div class="logo"><a href="index.html"><img src="images/logo.gif" width="146" height="106" border="0" alt="logo" /></a></div>
+      <div class="menu">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="portfolio.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="clr"></div>
+  </div>
+  <div class="header_text_bg">
+    <div class="header_text">
+      <div class="gallery">
+        <div id="slider">
+          <ul>
+            <li>
+              <div class="div">
+                <div class="left1">
+                  <h2>We'll make sure your website works for you.</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, </p>
+                  <p><a href="#"><img src="images/more_information.gif" alt="picture" width="110" height="30" border="0" /></a></p>
+                </div>
+                <img src="images/simple_img_1.jpg" alt="screen 1" width="346" height="198" border="0" class="screen"  /> </div>
+            </li>
+            <li>
+              <div class="div">
+                <div class="left1">
+                  <h2>Ultimate clean business template...</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, </p>
+                  <p><a href="#"><img src="images/more_information.gif" alt="picture" width="110" height="30" border="0" /></a></p>
+                </div>
+                <img src="images/simple_img_2.jpg" alt="screen 1" width="346" height="198" border="0" class="screen"  /></div>
+            </li>
+            <li>
+              <div class="div">
+                <div class="left1">
+                  <h2>We specialize in HTML CSS and PHP Sites.</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, </p>
+                  <p><a href="#"><img src="images/more_information.gif" alt="picture" width="110" height="30" border="0" /></a></p>
+                </div>
+                <img src="images/simple_img_3.jpg" alt="screen 1" width="346" height="198" border="0" class="screen"  /></div>
+            </li>
+          </ul>
+          <div class="clr"></div>
+        </div>
+      </div>
+    </div>
+    <div class="clr"></div>
+  </div>
+  <div class="clr"></div>
+  <div class="clr"></div>
+  <div class="body_resize">
+    <div class="body">
+      <div class="block2">
+        <h2>Web development</h2>
+        <img src="images/img_1.jpg" alt="picture" width="268" height="101" />
+        <div class="clr"></div>
+        <p><strong>Proin a orci nibh. </strong><br />
+          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec scelerisque dictum turpis accumsan adipiscing.<br />
+          Nullam dolor justo, elementum neceipo euismod vel, feugiat quis enim [...]</p>
+        <p><a href="#">Read More »</a></p>
+      </div>
+      <div class="block2">
+        <h2>Project management</h2>
+        <img src="images/img_2.jpg" alt="picture" width="268" height="101" />
+        <div class="clr"></div>
+        <p>Lorem ipsum dolor sit amet,  consectetuer <br />
+          adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. <br />
+          Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
+        <p><a href="#">Read More »</a></p>
+      </div>
+      <div class="block2">
+        <h2>Latest news</h2>
+        <div class="clr"></div>
+        <div class="news">
+          <p><span><strong>12 Dec 2015</strong><br />
+            <a href="#">0 comments<br />
+            by Admin</a></span></p>
+        </div>
+        <p><strong>Duis nec porttitor lorem</strong><br />
+          Mauris et nisi urna nonfaucibus magna. Integer lacus ante then ullamcorper ut vulputate..</p>
+        <div class="clr"></div>
+        <div class="news">
+          <p><span><strong>12 Dec 2015</strong><br />
+            <a href="#">0 comments<br />
+            by Admin</a></span></p>
+        </div>
+        <p><strong>Duis nec porttitor lorem</strong><br />
+          Mauris et nisi urna nonfaucibus magna. Integer lacus ante then ullamcorper ut vulputate..</p>
+        <div class="clr"></div>
+        <div class="news">
+          <p><span><strong>12 Dec 2015</strong><br />
+            <a href="#">0 comments<br />
+            by Admin</a></span></p>
+        </div>
+        <p><strong>Duis nec porttitor lorem</strong><br />
+          Mauris et nisi urna nonfaucibus magna. Integer lacus ante then ullamcorper ut vulputate..</p>
+        <p><a href="#"> More News»</a></p>
+      </div>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+  <div class="footer_slider">
+    <div class="slider2">
+      <h2>Featured work</h2>
+      <ul id="screen">
+        <li><a id="left" href="#"><img src="images/l_arrow2.gif" alt="picture" width="23" height="23" border="0" /></a></li>
+        <li id="view">
+          <ul id="images">
+            <li><a href="#"><img src="images/slider_img_1.gif" alt="picture" width="146" height="103" /></a></li>
+            <li><a href="#"><img src="images/slider_img_2.gif" alt="picture" width="146" height="103" /></a></li>
+            <li><a href="#"><img src="images/slider_img_3.gif" alt="picture" width="146" height="103" /></a></li>
+            <li><a href="#"><img src="images/slider_img_4.gif" alt="picture" width="146" height="103" /></a></li>
+            <li><a href="#"><img src="images/slider_img_5.gif" alt="picture" width="146" height="103" /></a></li>
+            <li><a href="#"><img src="images/slider_img_1.gif" alt="picture" width="146" height="103" /></a></li>
+            <li><a href="#"><img src="images/slider_img_2.gif" alt="picture" width="146" height="103" /></a></li>
+            <li><a href="#"><img src="images/slider_img_3.gif" alt="picture" width="146" height="103" /></a></li>
+            <li><a href="#"><img src="images/slider_img_4.gif" alt="picture" width="146" height="103" /></a></li>
+          </ul>
+        </li>
+        <li><a id="right" href="#"><img src="images/r_arrow2.gif" alt="picture" width="23" height="23" border="0" /></a></li>
+      </ul>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+  <div class="FBG_resize">
+    <div class="FBG">
+      <div class="blog">
+        <h2>What They Say</h2>
+        <p><img src="images/test.gif" alt="picture" width="24" height="17" /> &quot;Quis autem vel eum iure reprehenderit <br />
+          qui in ea voluptate velit esse voluptas nulla pariatur?&quot;</p>
+        <p><a href="#">by: John S., webdesigner</a></p>
+      </div>
+      <div class="blog2">
+        <h2>Development</h2>
+        <ul>
+          <li><a href="#">Web Strategy</a></li>
+          <li><a href="#">Web Applications</a></li>
+          <li><a href="#">Flash Design</a></li>
+          <li><a href="#">Hosting &amp; Domains</a></li>
+        </ul>
+      </div>
+      <div class="blog2">
+        <h2>Contact </h2>
+        <ul>
+          <li><a href="#">Share / Bookmark</a></li>
+          <li><a href="#">Blog RSS</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Website News</a></li>
+        </ul>
+      </div>
+      <div class="blog">
+        <h2>About Us</h2>
+        <p>Vestibulum vehicula purus nec dui accumsan fermentum. 
+          Suspendisse potenti. Ut dapibus est id odio pretium blandit in eget leo. Aliquam erat volutpat. Curabitur blandit odio eget odio eleifend vel mattis augue convallis. </p>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="footer_resize">
+    <p class="leftt">© Copyright websitename . All Rights Reserved. <a href="#"><br />
+      Home</a> | <a href="#">Contact</a> | <a href="#">RSS </a></p>
+    <p class="right">(DT) <a href="http://www.dreamtemplate.com">Website Templates</a></p>
+    <div class="clr"></div>
+  </div>
+  <div class="clr"></div>
+</div>
+</body>
+</html>

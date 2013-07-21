@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>DreamTemplate</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+// <![CDATA[
+jQuery(document).ready(function(){
+	$('#contactform').submit(function(){				  
+		var action = $(this).attr('action');
+		$.post(action, { 
+			name: $('#name').val(),
+			email: $('#email').val(),
+			company: $('#company').val(),
+			subject: $('#subject').val(),
+			message: $('#message').val()
+		},
+			function(data){
+				$('#contactform #submit').attr('disabled','');
+				$('.response').remove();
+				$('#contactform').before('<p class="response">'+data+'</p>');
+				$('.response').slideDown();
+				if(data=='Message sent!') $('#contactform').slideUp();
+			}
+		); 
+		return false;
+	});
+});
+// ]]>
+</script>
+</head>
+<body>
+<div class="main">
+    <div class="header_bg">
+    <div class="header">
+      <div class="logo"><a href="index.html"><img src="images/logo.gif" width="146" height="106" border="0" alt="logo" /></a></div>
+      <div class="menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="portfolio.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html" class="active">Contact us</a></li>
+        </ul>
+      </div>
+
+    </div>
+          <div class="clr"></div>
+    </div>
+        <div class="header_text_bg2">
+    <div class="header_text">
+    <img src="images/sub_img.gif" alt="picture" width="159" height="28" class="sub_page" />
+    <h2>Contact Us</h2>
+
+    </div>
+          <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  <div class="clr"></div>
+  <div class="body_resize">
+    <div class="body">
+    <div class="body_big">
+    <h2>Contact to Company</h2>
+    <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec scelerisque dictum turpis accumsan adipiscing.<br />
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
+    <p>&nbsp;</p>
+    <form action="contact.php" method="post" id="contactform">
+            <ol>
+              <li>
+                <label for="name">First Name <span class="red">*</span></label>
+                <input id="name" name="name" class="text" />
+              </li>
+              <li>
+                <label for="email">Your email <span class="red">*</span></label>
+                <input id="email" name="email" class="text" />
+              </li>
+              <li>
+                <label for="company">Company</label>
+                <input id="company" name="company" class="text" />
+              </li>
+              <li>
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" class="text" />
+              </li>
+              <li>
+                <label for="message">Message <span class="red">*</span></label>
+                <textarea id="message" name="message" rows="6" cols="50"></textarea>
+              </li>
+              <li class="buttons">
+                <input type="image" name="imageField" id="imageField" src="images/send.gif" class="send" />
+                <div class="clr"></div>
+              </li>
+          </ol>
+        </form>
+    </div>
+      <div class="block2">
+        <h2>Contact Details</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget bibendum tellus. <br />
+          Nunc vel imperdiet tellus. Mauris ornare aliquam urna, accumsan bibendum eros auctor ac.</p>
+        <p><a href="#">Address Info:</a><br />
+        1234 Address City, TS 56789 City, Country</p>
+        <p><a href="#">Other Contacts:</a><br />
+          Email: testmail@template.com<br />
+          Website: www.template.com<br />
+        Phone: 0800-123456</p>
+        <a href="#"><img src="images/rss_1.jpg" alt="picture" width="25" height="25" border="0" class="port" /></a><a href="#"><img src="images/rss_2.jpg" alt="picture" width="25" height="25" border="0" class="port" /></a>
+        <a href="#"><img src="images/rss_3.jpg" alt="picture" width="25" height="25" border="0" class="port" /></a>
+        <a href="#"><img src="images/rss_4.jpg" alt="picture" width="25" height="25" border="0"  class="port"/></a>
+        <a href="#"><img src="images/rss_5.jpg" alt="picture" width="25" height="25" border="0"  class="port"/></a>
+        <a href="#"><img src="images/rss_6.jpg" alt="picture" width="25" height="25" border="0"  class="port"/></a>
+        <a href="#"><img src="images/rss_7.jpg" alt="picture" width="25" height="25" border="0" class="port" /></a>
+        <a href="#"><img src="images/rss_8.jpg" alt="picture" width="25" height="25" border="0"  class="port"/></a>
+        <a href="#"><img src="images/rss_9.jpg" alt="picture" width="25" height="25" border="0"  class="port"/></a>
+      </div>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+    <div class="FBG_resize">
+    <div class="FBG">
+      <div class="blog">
+        <h2>What They Say</h2>
+        
+<p><img src="images/test.gif" alt="picture" width="24" height="17" /> &quot;Quis autem vel eum iure reprehenderit <br />
+  qui in ea voluptate velit esse voluptas nulla pariatur?&quot;</p>
+<p><a href="#">by: John S., webdesigner</a></p>
+      </div>
+      <div class="blog2">
+        <h2>Development</h2>
+        <ul>
+          <li><a href="#">Web Strategy</a></li>
+          <li><a href="#">Web Applications</a></li>
+          <li><a href="#">Flash Design</a></li>
+          <li><a href="#">Hosting &amp; Domains</a></li>
+        </ul>
+      </div>
+       <div class="blog2">
+        <h2>Contact </h2>
+        <ul>
+          <li><a href="#">Share / Bookmark</a></li>
+          <li><a href="#">Blog RSS</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Website News</a></li>
+        </ul>
+      </div>
+      <div class="blog">
+        <h2>About Us</h2>
+        <p>Vestibulum vehicula purus nec dui accumsan fermentum. 
+        Suspendisse potenti. Ut dapibus est id odio pretium blandit in eget leo. Aliquam erat volutpat. Curabitur blandit odio eget odio eleifend vel mattis augue convallis. </p>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="footer_resize">
+    <p class="leftt">© Copyright websitename . All Rights Reserved. <a href="#"><br />
+      Home</a> | <a href="#">Contact</a> | <a href="#">RSS </a></p>
+    <p class="right">(DT) <a href="http://www.dreamtemplate.com"><strong>Website Templates</strong></a></p>
+    <div class="clr"></div>
+  </div>
+  <div class="clr"></div>
+</div>
+</body>
+</html>
