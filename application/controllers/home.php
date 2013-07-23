@@ -48,7 +48,10 @@ class Home extends MY_Controller {
 	public function build()	{
 		if($this->input->post('myedit'))
 		{
-		echo "done";
+		$url="themes/infocus/".$this->uri->segment(2).".html";
+		file_put_contents($url, $this->input->post('myedit'));
+		$target= base_url()."build/".$this->uri->segment(2);
+        header("Location: " . $target);
 		}
 		else
 		{
@@ -117,18 +120,9 @@ class Home extends MY_Controller {
 		}
 		
 	}	
-	public function savefile()
-	{
-	echo "oooooooooooook";
+	
 
-	}
-
-	public function titlechange()
-	{
-
-	 $this->template->set('title','Change Title');
-	 $this->template->load('layouts/main','titlechange');
-	}
+	
 	
 }
 
