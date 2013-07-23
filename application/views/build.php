@@ -1,6 +1,8 @@
-
 <div class="well">
-	
+<form method='post'>
+Page Title: <input type='text' name='mytitle' value="<?php echo $mytitle ?>" /> 
+<br/><input type="submit" class="btn btn-info" />
+</form>	
 </div>
 <form method="post">
 <textarea id="myedit" name="myedit">
