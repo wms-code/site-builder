@@ -1,14 +1,7 @@
 <?php
-/**
- * Codeigniter Bootstrap
- * -------------------------------------------------------------------
- * Developed and maintained by Stijn Geselle <stijn.geselle@gmail.com>
- * -------------------------------------------------------------------
- */
-
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
-
+ if (!defined('BASEPATH'))
+ 	 exit('No direct script access allowed'); 
+	 
 class Home extends MY_Controller {
 	
 	  public function __construct()
@@ -22,35 +15,72 @@ class Home extends MY_Controller {
         $this->template->set('title', 'My website');
         $this->template->load('layouts/main', 'home');
     }
-	
-	function fetchUrl($uri) {
-    $handle = curl_init();
-
-    curl_setopt($handle, CURLOPT_URL, $uri);
-    curl_setopt($handle, CURLOPT_POST, false);
-    curl_setopt($handle, CURLOPT_BINARYTRANSFER, false);
-    curl_setopt($handle, CURLOPT_HEADER, true);
-    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 10);
-
-    $response = curl_exec($handle);
-    $hlength  = curl_getinfo($handle, CURLINFO_HEADER_SIZE);
-    $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-    $body     = substr($response, $hlength);
-
-    // If HTTP response is not 200, throw exception
-    if ($httpCode != 200) {
-        throw new Exception($httpCode);
-    }
-
-    return $body;
-	}
-	public function build()	{
+	public function	edit()
+	{
+		$data['mytitle'] = "";
+		$themepath='themes/'.$this->uri->segment(2).'/';
+		$filename = $this->uri->segment(3) . ".html";
+		$fileurl = $themepath.$filename;
+				
 		if($this->input->post('myedit'))
 		{
-		$url="themes/infocus/".$this->uri->segment(2).".html";
-		file_put_contents($url, $this->input->post('myedit'));
-		$target= base_url()."build/".$this->uri->segment(2);
+			$content=$this->input->post('myedit');
+			$headtmp = @stristr($content,"<!-- DO NOT EDIT HEH -->",TRUE);
+			if($headtmp &&  stristr($headtmp,"<!-- DO NOT EDIT HSH -->") )
+			{
+				$head = stristr($headtmp,"<!-- DO NOT EDIT HSH -->") . "\n<!-- DO NOT EDIT HEH -->";
+				file_put_contents($themepath.'include/head.html',$head);
+			}
+			$footertmp = @stristr($content,"<!-- DO NOT EDIT FEH -->",TRUE);
+			if($footertmp &&  stristr($footertmp,"<!-- DO NOT EDIT FSH -->") )
+			{
+				$footer = stristr($footertmp,"<!-- DO NOT EDIT FSH -->") . "\n<!-- DO NOT EDIT FEH -->";
+				file_put_contents($themepath.'include/footer.html',$footer);
+			}
+			$bodytmp = @stristr($content,"<!-- DO NOT EDIT FSH -->",TRUE);
+			if($bodytmp &&  stristr($bodytmp,"<!-- DO NOT EDIT MEH -->") )
+			{
+				$userbody = stristr($bodytmp,"<!-- DO NOT EDIT MEH -->");
+				$body = str_replace("<!-- DO NOT EDIT MEH -->",'<?php include("include/menu.html") ?>',$userbody);
+				$body .= '<?php include("include/footer.html") ?> ' . "\n</body>\n</html>";
+				$filebody= @file_get_contents($fileurl);
+				$topbody = stristr($filebody,'<?php include("include/menu.html") ?>',TRUE);
+				$body = $topbody . $body;
+				file_put_contents($fileurl,$body);
+			}
+			$target = base_url()."edit/".$this->uri->segment(2)."/".$this->uri->segment(3);
+			header("Location: " . $target);
+			exit(0);
+		}
+		if($this->input->post('mytitle'))
+		{	
+			$filehead= @file_get_contents($fileurl);
+			if (preg_match('/<title>(.+)<\/title>/',$filehead,$matches) && isset($matches[1] ))
+			$oldtitle = '<title>'.$matches[1].'</title>';
+			$newtitle='<title>'.$this->input->post('mytitle').'</title>';		
+			$filecontents = str_replace($oldtitle,$newtitle,$filehead);
+			@file_put_contents($fileurl,$filecontents );
+			$target= base_url()."edit/".$this->uri->segment(2)."/".$this->uri->segment(3);
+			header("Location: " . $target);
+		}
+	
+		$data['filecontents']= @file_get_contents(base_url().$fileurl);
+		if (preg_match('/<title>(.+)<\/title>/',$data['filecontents'],$matches) && isset($matches[1] ))
+		$data['mytitle'] = $matches[1];	
+		
+		
+		$this->template->set('title','Website builder');
+		$this->template->load('layouts/main','edit',$data);
+	}
+
+	public function build()	{
+		
+		if($this->input->post('myedit'))
+		{
+		$udata= str_replace('contenteditable="false"',"",$this->input->post('myedit'));
+		$url="themes/".$this->uri->segment(2)."/".$this->uri->segment(3).".html";
+		file_put_contents($url,$udata);
+		$target= base_url()."build/".$this->uri->segment(2)."/".$this->uri->segment(3);
         header("Location: " . $target);
 		}
 		else
@@ -60,22 +90,41 @@ class Home extends MY_Controller {
 			$data['filecontents'] ='';
 			$data['mytitle'] ='';
 			$doc = new DOMDocument();		
-			$arg = $this->uri->segment(2);
+			$arg = $this->uri->segment(3);
 			$pagetitle = $this->input->post('mytitle');		
 			try 
 			{
-			$page = base_url().'themes/infocus/'.$this->uri->segment(2).'.html';
-			$writepage = 'themes/infocus/'.$this->uri->segment(2).'.html';
+			$page = 'themes/'.$this->uri->segment(2)."/".$this->uri->segment(3).'.html';
+			$writepage = 'themes/'.$this->uri->segment(2)."/".$this->uri->segment(3).'.html';
+			$configpage = 'themes/'.$this->uri->segment(2).'/config.json';
+			
+			if (file_exists($page)) {
 			libxml_use_internal_errors(true);
-			$pageload=$this->fetchUrl($page);
+			$pageload= file_get_contents($page);
+			
+			if(file_exists($configpage))
+			{
+				$configdata = file_get_contents($configpage);
+				$configarray = json_decode($configdata);
+				foreach($configarray->lockclass as $cvalue)
+				{
+				  $rclass =  'class="'. $cvalue . '"';
+				  $pageload = str_replace($rclass,"$rclass contenteditable='false'",$pageload);
+				}
+			}
+			
+			
 			$doc->loadHTML($pageload);
-			$data['filecontents']=htmlspecialchars($pageload); 
+			$data['filecontents'] = $configarray;
+			$data['filecontents']=htmlspecialchars($pageload); 			
 			libxml_clear_errors();
+			}
+			
 				//check page name is Avil..
 				if($arg!="")		
 				{	
 					//check if title tag available
-					if($doc->getElementsByTagName("title")->item(0))
+					if($doc->getElementsByTagName("title")->item(0)->textContent)
 					{
 					//get page title
 					$data['mytitle'] = $doc->getElementsByTagName("title")->item(0)->textContent;	
@@ -120,10 +169,7 @@ class Home extends MY_Controller {
 		}
 		
 	}	
-	
 
-	
-	
 }
 
 /* End of file home.php */

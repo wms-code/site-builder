@@ -39,7 +39,7 @@
                         <ul class="nav">
                             <li><?php echo anchor('/', 'Home') ?></li>
                             <li><?php echo anchor('build/', 'build') ?></li>
-                            <li><?php echo anchor('titlechange/', 'titlechange') ?></li>
+                            <li><?php echo anchor('layout/', 'Edit Layout') ?></li>
                         </ul>
                     </div>
                 </div>

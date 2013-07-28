@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<script src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type='text/javascript'></script>
+	<script src="ckeditor/ckeditor.js"></script>
+	<script>
+
+		// This code is generally not necessary, but it is here to demonstrate
+		// how to customize specific editor instances on the fly. This fits well
+		// this demo because we have editable elements (like headers) that
+		// require less features.
+
+		// The "instanceCreated" event is fired for every editor instance created.
+		CKEDITOR.on( 'instanceCreated', function( event ) {
+			var editor = event.editor,
+				element = editor.element;
+
+			// Customize editors for headers and tag list.
+			// These editors don't need features like smileys, templates, iframes etc.
+			if ( element.is( 'h1', 'h2', 'h3' ) || element.getAttribute( 'id' ) == 'taglist' ) {
+				// Customize the editor configurations on "configLoaded" event,
+				// which is fired after the configuration file loading and
+				// execution. This makes it possible to change the
+				// configurations before the editor initialization takes place.
+				editor.on( 'configLoaded', function() {
+
+					// Remove unnecessary plugins to make the editor simpler.
+					editor.config.removePlugins = 'colorbutton,find,flash,font,' +
+						'forms,iframe,image,newpage,removeformat,' +
+						'smiley,specialchar,stylescombo,templates';
+
+					// Rearrange the layout of the toolbar.
+					editor.config.toolbarGroups = [
+						{ name: 'editing',		groups: [ 'basicstyles', 'links' ] },
+						{ name: 'undo' },
+						{ name: 'clipboard',	groups: [ 'selection', 'clipboard' ] },
+						{ name: 'about' }
+					];
+				});
+			}
+		});
+
+	</script>
+		<script type='text/javascript' language='javascript'>
+	// <![CDATA[
+	function ClickToSave () {
+		var data = CKEDITOR.instances.textToBeSaved.getData();
+		$.post('http://localhost/github/site-builder/save', {
+			content : data
+			})
+		}
+	// ]]>
+	</script>
+	<base href="http://localhost/github/site-builder/themes/infocus/" />
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<title>contact</title>
+</head>
+<body>
+<div class="main">
+<div class="header_bg" >
+<div class="header">
+<div class="logo"><a href="index.html"><img alt="logo" border="0" height="106" src="images/logo.gif" width="146" /></a></div>
+
+<div class="menu" >
+<ul>
+	<li><a href="index.html">Home</a></li>
+	<li><a class="active" href="about.html">About Us</a></li>
+	<li><a href="portfolio.html">Services</a></li>
+	<li><a href="portfolio.html">Portfolio</a></li>
+	<li><a href="contact.html">Contact us</a></li>
+</ul>
+</div>
+</div>
+
+<div class="clr"></div>
+</div>
+
+<div class="clr"></div>
+
+<div class="clr"></div>
+
+<div class="body_resize" >
+<table border="0" height="400px" width="100%">
+	<tbody>
+		<tr>
+			<th align="center">Content goes here...</th>
+			<th></th>
+		</tr>
+		<tr>
+		</tr>
+	</tbody>
+</table>
+
+<div class="clr"></div>
+</div>
+
+<div class="FBG_resize" >
+<div class="FBG">
+<div class="blog">
+<h2>What They Say</h2>
+
+<p><img alt="picture" height="17" src="images/test.gif" width="24" /> &quot;Quis autem vel eum iure reprehenderit<br />
+qui in ea voluptate velit esse voluptas nulla pariatur?&quot;</p>
+
+<p><a href="#">by: John S., webdesigner</a></p>
+</div>
+
+<div class="blog2">
+<h2>Development</h2>
+
+<ul>
+	<li><a href="#">Web Strategy</a></li>
+	<li><a href="#">Web Applications</a></li>
+	<li><a href="#">Flash Design</a></li>
+	<li><a href="#">Hosting &amp; Domains</a></li>
+</ul>
+</div>
+
+<div class="blog2">
+<h2>Contact</h2>
+
+<ul>
+	<li><a href="#">Share / Bookmark</a></li>
+	<li><a href="#">Blog RSS</a></li>
+	<li><a href="#">Twitter</a></li>
+	<li><a href="#">Website News</a></li>
+</ul>
+</div>
+
+<div class="blog">
+<h2>About Us</h2>
+
+<p>Vestibulum vehicula purus nec dui accumsan fermentum. Suspendisse potenti. Ut dapibus est id odio pretium blandit in eget leo. Aliquam erat volutpat. Curabitur blandit odio eget odio eleifend vel mattis augue convallis.</p>
+</div>
+
+<div class="clr"></div>
+</div>
+</div>
+</div>
+<div class="footer" id='textToBeSaved' contenteditable="true" onblur='ClickToSave()' >
+<div class="footer_resize" >
+<p class="leftt" >&copy; Copyright websitename . All Rights Reserved.<br />
+<a href="#">Home</a> | <a href="#">Contact</a> | <a href="#">RSS </a></p>
+
+<p class="right">(DT) <a href="http://www.dreamtemplate.com"><strong>Website Templates</strong></a></p>
+
+<div class="clr"></div>
+</div>
+
+<div class="clr"></div>
+</div>
+</body>
+</html>
