@@ -1,174 +1,222 @@
 <?php
- if (!defined('BASEPATH'))
- 	 exit('No direct script access allowed'); 
-	 
+if (!defined('BASEPATH'))
+	exit('No direct script access allowed'); 
+
 class Home extends MY_Controller {
 	
-	  public function __construct()
-       {
-            parent::__construct();
-            // Your own constructor code
-			 
-       }
-
-    public function index() {
-        $this->template->set('title', 'My website');
-        $this->template->load('layouts/main', 'home');
-    }
-	public function	edit()
+	public function __construct()
 	{
-		$data['mytitle'] = "";
-		$themepath='themes/'.$this->uri->segment(2).'/';
-		$filename = $this->uri->segment(3) . ".html";
-		$fileurl = $themepath.$filename;
-				
-		if($this->input->post('myedit'))
+		parent::__construct();
+
+        // Your own constructor code
+		$this->load->model('edtior_model');
+		
+	}
+
+
+	public function index()
+	{
+		$this->template->set('title', 'My website');
+		$this->template->load('layouts/main', 'home');
+	}
+	
+
+	public function menu()
+	{
+
+		$this->template->set('title', 'My website');
+		$this->template->load('layouts/main', 'menu');
+	}
+
+
+	public function addpage()
+	{
+		
+		if ($this->uri->segment(3)) {
+			//Getting the original theme from the DB based on user project.
+			$basepath = $this->edtior_model->base_themepath();
+		if ($this->input->post('pagename')) 
 		{
-			$content=$this->input->post('myedit');
-			$headtmp = @stristr($content,"<!-- DO NOT EDIT HEH -->",TRUE);
-			if($headtmp &&  stristr($headtmp,"<!-- DO NOT EDIT HSH -->") )
-			{
-				$head = stristr($headtmp,"<!-- DO NOT EDIT HSH -->") . "\n<!-- DO NOT EDIT HEH -->";
-				file_put_contents($themepath.'include/head.html',$head);
-			}
-			$footertmp = @stristr($content,"<!-- DO NOT EDIT FEH -->",TRUE);
-			if($footertmp &&  stristr($footertmp,"<!-- DO NOT EDIT FSH -->") )
-			{
-				$footer = stristr($footertmp,"<!-- DO NOT EDIT FSH -->") . "\n<!-- DO NOT EDIT FEH -->";
-				file_put_contents($themepath.'include/footer.html',$footer);
-			}
-			$bodytmp = @stristr($content,"<!-- DO NOT EDIT FSH -->",TRUE);
-			if($bodytmp &&  stristr($bodytmp,"<!-- DO NOT EDIT MEH -->") )
-			{
-				$userbody = stristr($bodytmp,"<!-- DO NOT EDIT MEH -->");
-				$body = str_replace("<!-- DO NOT EDIT MEH -->",'<?php include("include/menu.html") ?>',$userbody);
-				$body .= '<?php include("include/footer.html") ?> ' . "\n</body>\n</html>";
-				$filebody= @file_get_contents($fileurl);
-				$topbody = stristr($filebody,'<?php include("include/menu.html") ?>',TRUE);
-				$body = $topbody . $body;
-				file_put_contents($fileurl,$body);
-			}
-			$target = base_url()."edit/".$this->uri->segment(2)."/".$this->uri->segment(3);
+			 $this->edtior_model->create_page($basepath);			
+		}
+		$data['files']=$this->edtior_model->getfilename("themes/".$basepath);
+		//$this->template->set('title', 'My website',$data);
+		$this->load->view('addpage',$data);
+		}
+		else
+		{ 
+			echo "error: you must seleect a project after you can add new file <br>";
+			echo "<h3>Click the Projects   on the Top Menu.  Open your project Files. after try open new file <br> Note :You Must Choose A Project First </h3>";
+		}
+	}
+
+
+	public function pages()
+	{
+		// Change Title
+		if ($this->input->post('title')) 
+		{
+			$this->edtior_model->change_title();
+		}
+		//page Rename
+		if ($this->input->post('page')) {
+		
+			$this->edtior_model->page_rename();
+			$target = base_url()."pages/". SALT ."/" .$this->uri->segment(3);
 			header("Location: " . $target);
 			exit(0);
 		}
-		if($this->input->post('mytitle'))
-		{	
-			$filehead= @file_get_contents($fileurl);
-			if (preg_match('/<title>(.+)<\/title>/',$filehead,$matches) && isset($matches[1] ))
-			$oldtitle = '<title>'.$matches[1].'</title>';
-			$newtitle='<title>'.$this->input->post('mytitle').'</title>';		
-			$filecontents = str_replace($oldtitle,$newtitle,$filehead);
-			@file_put_contents($fileurl,$filecontents );
-			$target= base_url()."edit/".$this->uri->segment(2)."/".$this->uri->segment(3);
-			header("Location: " . $target);
+
+		//Get file name & Date & Page Title as a Array
+		if ($this->uri->segment(3)) {
+			$data['furl']=$this->uri->segment(3);
+			$filename=$this->edtior_model->getfilename("userdata/".USERNAME."/".$data['furl']);
+			if($filename === false){
+			show_404(); //Pages url  invaild !
 		}
-	
-		$data['filecontents']= @file_get_contents(base_url().$fileurl);
-		if (preg_match('/<title>(.+)<\/title>/',$data['filecontents'],$matches) && isset($matches[1] ))
-		$data['mytitle'] = $matches[1];	
-		
-		
-		$this->template->set('title','Website builder');
-		$this->template->load('layouts/main','edit',$data);
+		foreach ($filename as  $value) {
+			$cdate=get_file_info("userdata/".USERNAME."/".$data['furl']."/$value");			
+			$fdate=date ("d/m/Y H:i",$cdate['date']);			
+			$fileurl="userdata/".USERNAME."/".$data['furl']."/$value";
+			$title=$this->edtior_model->gettitle($fileurl);
+			$filename=str_replace(".html","", $value);
+			$data['list'][]=array("fdate"=>"$fdate","filename"=>"$filename","title"=>"$title");
+		}
+
+		$this->template->set('title', 'My website');
+		$this->template->load('layouts/main', 'pages',$data);
+	}
+}
+/**
+ * del page 
+ * @return [redirect ] [redirect to current project folder]
+ */
+public function	delpage()
+{
+	$fileurl='userdata/'.USERNAME."/".$this->uri->segment(3).'/'.$this->uri->segment(4);
+	if (file_exists($fileurl)) {
+		unlink($fileurl);
+		$target = base_url()."pages/".SALT."/".$this->uri->segment(3);
+		header("Location: " . $target);
+		exit(0);
+	}
+	else
+	{
+		// report a bug  file not found
 	}
 
-	public function build()	{
-		
-		if($this->input->post('myedit'))
+}
+
+
+
+
+public function	edit()
+{
+	$this->load->library('edtior');
+	$data['mytitle'] = "";
+	$data['themepath']=$themepath='userdata/'.USERNAME."/".$this->uri->segment(3).'/';
+	$filename = $this->uri->segment(4,'index.html');
+	$fileurl = $themepath.$filename;
+	$data['filecontents']='';
+	if($this->input->post('myedit'))
+	{
+		$content=$this->input->post('myedit');
+		if($this->edtior->savepages($content,$fileurl,$themepath))
 		{
-		$udata= str_replace('contenteditable="false"',"",$this->input->post('myedit'));
-		$url="themes/".$this->uri->segment(2)."/".$this->uri->segment(3).".html";
-		file_put_contents($url,$udata);
-		$target= base_url()."build/".$this->uri->segment(2)."/".$this->uri->segment(3);
-        header("Location: " . $target);
-		}
-		else
-		{
-			//assign variables
-			$data='';		
-			$data['filecontents'] ='';
-			$data['mytitle'] ='';
-			$doc = new DOMDocument();		
-			$arg = $this->uri->segment(3);
-			$pagetitle = $this->input->post('mytitle');		
-			try 
-			{
-			$page = 'themes/'.$this->uri->segment(2)."/".$this->uri->segment(3).'.html';
-			$writepage = 'themes/'.$this->uri->segment(2)."/".$this->uri->segment(3).'.html';
-			$configpage = 'themes/'.$this->uri->segment(2).'/config.json';
-			
-			if (file_exists($page)) {
-			libxml_use_internal_errors(true);
-			$pageload= file_get_contents($page);
-			
-			if(file_exists($configpage))
-			{
-				$configdata = file_get_contents($configpage);
-				$configarray = json_decode($configdata);
-				foreach($configarray->lockclass as $cvalue)
-				{
-				  $rclass =  'class="'. $cvalue . '"';
-				  $pageload = str_replace($rclass,"$rclass contenteditable='false'",$pageload);
-				}
-			}
-			
-			
-			$doc->loadHTML($pageload);
-			$data['filecontents'] = $configarray;
-			$data['filecontents']=htmlspecialchars($pageload); 			
-			libxml_clear_errors();
-			}
-			
-				//check page name is Avil..
-				if($arg!="")		
-				{	
-					//check if title tag available
-					if($doc->getElementsByTagName("title")->item(0)->textContent)
-					{
-					//get page title
-					$data['mytitle'] = $doc->getElementsByTagName("title")->item(0)->textContent;	
-						if($pagetitle!="")
-						{
-						$parent = $doc->getElementsByTagName("title")->item(0);
-						$newchild = $doc->createTextNode($pagetitle);
-						$parent->replaceChild($newchild, $parent->firstChild);
-						$doc->saveHTMLFile($writepage);
-						$data['mytitle']=$pagetitle;					
-						}
-					
-					}	
-					else if($doc->getElementsByTagName("head")->item(0))
-					{
-							if($pagetitle!="")
-							{
-							$head = $doc->getElementsByTagName("head")->item(0);	
-							$title = $doc->createElement('title');
-							$title = $head->appendChild($title);
-							$text = $doc->createTextNode($pagetitle);
-							$text = $title->appendChild($text);
-							$doc->saveHTMLFile($writepage);
-							$data['mytitle']=$pagetitle;				
-							}
-							
-					}		
-					else
-					{
-					//No head tag
-					$data['filecontents']="no header file";
-					}
-						
 				
-				}
-			}
-			catch (Exception $e) {
-			error_log('Fetch URL failed: ' . $e->getMessage() . ' for ' . $page);
-			}		
-			$this->template->set('title','Website builder');
-			$this->template->load('layouts/main','build',$data);
-		}
+		$target = base_url()."edit/".SALT."/".$this->uri->segment(3)."/".$this->uri->segment(4);
+		header("Location: " . $target);
+		exit(0);
+		}		
 		
-	}	
+	}
+	
+
+	//note : file_get_contents   must be html htmlspecialchars
+	if (file_exists($fileurl) && ""!=$this->uri->segment(3)) {
+		$data['filecontents']= htmlspecialchars(file_get_contents(base_url().$fileurl));
+		if (preg_match('/<title>(.+)<\/title>/',$data['filecontents'],$matches) && isset($matches[1] ))
+			$data['mytitle'] = $matches[1];	
+
+		$files=$this->edtior_model->getfilename('userdata/'.USERNAME."/".$this->uri->segment(3));
+		//Split an array into 5 value an array	
+		$data['files']=array_chunk($files, 5);		
+	}
+	
+	$this->template->set('title','Website builder');
+	$this->template->load('layouts/editpage','edit',$data);
+}
+
+
+	public function browsethemes()
+	{
+		$this->load->helper('directory');		
+	if($this->input->post('sitename'))
+		{
+			//$host = parse_url($this->input->post('sitename'), PHP_URL_HOST);
+			$host= $this->input->post('sitename');
+			$host = trim($host, '/');
+
+			// If scheme not included, prepend it
+			if (!preg_match('#^http(s)?://#', $host)) {
+				$host = 'http://' . $host;
+			}
+			$urlParts = parse_url($host);
+			// remove www
+			$host = preg_replace('/^www\./', '', $urlParts['host']);
+
+			$host = str_replace('', '-', $host); // Replaces all spaces with hyphens.
+			$sitename = preg_replace('/[^A-Za-z0-9\-\.]/', '', $host);
+			
+			if(""==$sitename)
+			{
+				$target = base_url() . "browsethemes";
+				header("Location: ". $target);
+				exit(0);
+			}
+			//Verify user directory exists if not create .
+			$username = $this->session->userdata('username');
+			$userpath = "userdata/" . $username;
+			if(!is_dir($userpath))mkdir("userdata/".$username, 0775, true);
+			$userpath = $userpath ."/" . $sitename;
+			
+			$theme_path = "themes/" . $this->input->post('theme_path');
+
+			if(file_exists($theme_path) )
+			{
+				if(!file_exists($userpath))
+				{
+					directory_copy($theme_path,$userpath);
+					$heads = file_get_contents($theme_path."/include/head.html");
+					$heads = str_replace($theme_path, $userpath, $heads);
+					file_put_contents($userpath."/include/head.html", $heads);
+					$data['user_id'] = $this->session->userdata('user_id');
+					$data['sitename'] = $sitename;
+					$data['sitedescription'] = $this->input->post('description');
+					$data['base_themepath'] = $this->input->post('theme_path');
+					//TODO: need to create or update base_path in html  
+					if($this->db->insert('projects',$data))
+					{
+						$target = base_url()."pages/".SALT."/$sitename";
+						header("Location: ".$target);
+						exit(0);
+					}
+				}
+				else
+				{
+					//TODO: If project already present WARN user !!
+				}
+				
+			}
+			
+		}
+		$this->template->set('title', 'My website');
+		$this->template->load('layouts/main', 'themes');
+		
+	}
+
+
+
 
 }
 

@@ -1,20 +1,16 @@
-<!-- DO NOT EDIT MSH -->
-<div class="main">
-<div class="header_bg" >
-<div class="header">
-<div class="logo"><a href="index.html"><img alt="logo" border="0" height="106" src="images/logo.gif" width="146" /></a></div>
+<!-- DO NOT EDIT MSH --> <?php $page=basename($_SERVER["PHP_SELF"]) ?>
 
-<div class="menu" contenteditable="false">
+<div class="menu">
 <ul>
-	<li><a href="index.html">Home</a></li>
-	<li><a class="active" href="about.html">About Us</a></li>
-	<li><a href="portfolio.html">Services</a></li>
-	<li><a href="portfolio.html">Portfolio</a></li>
-	<li><a href="contact.html">Contact us</a></li>
+	<li><a href="index.html" <?php if($page=="index.html") { echo "class=current"; } ?> >Home</a></li>
+	<li><a href="about.html" <?php if($page=="about.html") { echo "class=current"; } ?> >About Us</a></li>
+	<li><a href="portfolio.html" <?php if($page=="portfolio.html") { echo "class=current"; } ?> >Portfolio</a></li>
+	<li><a href="contact.html" <?php if($page=="contact.html") { echo "class=current"; } ?> >Contact us</a></li>
 </ul>
 </div>
 </div>
 
 <div class="clr"></div>
 </div>
+
 <!-- DO NOT EDIT MEH -->

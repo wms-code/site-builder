@@ -3869,7 +3869,7 @@ input[type="submit"].btn.btn-mini {
   margin-top: 3px;
 }
 
-.navbar .dropdown-menu:before {
+.navbar .dropdown-menu:before, .btn-group .dropdown-menu:before {
   position: absolute;
   top: -7px;
   left: 9px;
@@ -3881,7 +3881,7 @@ input[type="submit"].btn.btn-mini {
   content: '';
 }
 
-.navbar .dropdown-menu:after {
+.navbar .dropdown-menu:after, .btn-group .dropdown-menu:after {
   position: absolute;
   top: -6px;
   left: 10px;

@@ -7,22 +7,8 @@
 <meta name="keywords" content="" />
 <meta name="title" content="" />
 <meta name="description" content="" />
-<title>Quick Host</title>
-<link rel="shortcut icon" href="images/favicon.html" />
-<!-- ////////////////////////////////// -->
-<!-- //      Start Stylesheets       // -->
-<!-- ////////////////////////////////// -->
-<link href="styles/style.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="styles/inner.css" rel="stylesheet" type="text/css" media="screen" />
-
-
-<!-- ////////////////////////////////// -->
-<!-- //      Javascript Files        // -->
-<!-- ////////////////////////////////// -->
-<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
-<script type="text/javascript" src="js/hoverIntent.js"></script> 
-<script type="text/javascript" src="js/superfish.js"></script> 
-<script type="text/javascript" src="js/supersubs.js"></script> 
+<title>Quick Host - Service</title>
+<?php include("include/head.html") ?>
 
 <script type="text/javascript">
 jQuery(document).ready(function(){
@@ -43,47 +29,8 @@ jQuery(document).ready(function(){
 
 </head>
 <body>
-
-<div id="wrapper">
-	<div id="bg-gray">
-    	<div class="light"></div>
-    </div>
-	<div id="main-frame">
-    
-        <div id="top">
-            <div id="logo">
-                <a href="index.html"><img src="images/logo.png" alt="" /></a>            
-            </div><!--#logo-->
-			<div id="topsearch">
-				<form action="#" method="post">
-					<div><input type="text" class="inputbox" /><input type="submit" value="Search" class="button" /></div>
-				</form>
-			</div><!-- end #topsearch -->
-            <div class="clearfix"></div>
-        </div><!--#top-->
-        
-        <div id="frame" class="inner">
-		<div id="header">
-            <div id="nav">
-            	<div class="container">
-                <ul id="topnav" class="sf-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Hosting</a>
-                        <ul>
-                          <li><a href="pricingbox.html">Pricing Box</a></li>
-                          <li><a href="pricingtable.html">Pricing Table</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="service.html"  class="current">Service</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="faq.html">FAQs</a></li>
-                    <li><a href="typography.html">Typography</a></li>
-                    <li><a href="contacts.html">Contacts</a></li>
-                </ul><!-- #topnav -->
-                </div>
-            </div><!--#nav-->
+<?php include("include/header.html") ?>
+<?php include("include/menu.html") ?>
         
             <div class="clearfix"></div>
             
@@ -141,95 +88,6 @@ jQuery(document).ready(function(){
             </div><!-- .twelve.columns -->
             <div class="clearfix"></div>
         </div><!--container-->
-	</div>
-	</div>
-    
-	<div id="wrapper-footer">
-        <div id="banner-footer">
-			<div class="container">
-            	<div class="twelve columns">
-            	<img src="images/icons/icon-logo1.png" alt=""  />
-                <img src="images/icons/icon-logo2.png" alt=""  />
-                <img src="images/icons/icon-logo3.png" alt=""  />
-                <img src="images/icons/icon-logo4.png" alt=""  />
-                <img src="images/icons/icon-logo5.png" alt=""  />
-                <img src="images/icons/icon-logo6.png" alt=""  />
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-		<div class="container">
-        	<div class="twelve columns footer">
-				<div class="three columns alpha">
-                    <ul>
-                        <li class="widget-container">
-                        <h2 class="widget-title">Web Hosting</h2>
-                        <ul>
-                            <li><a href="#">Domain Names</a></li>
-                            <li><a href="#">Windows Web Hosting</a></li>
-                            <li><a href="#">Dedicated Services</a></li>
-                            <li><a href="#">Reseller Hosting</a></li>
-                            <li><a href="#">Linux Web Hosting</a></li>
-                            <li><a href="#">Windows Web Hosting</a></li>
-                        </ul>
-                        </li>
-                    </ul>
-				</div>
-				<div class="three columns">
-                    <ul>
-                        <li class="widget-container">
-                        <h2 class="widget-title">Support</h2>
-                        <ul>
-                            <li><a href="#">Client Area</a></li>
-                            <li><a href="#">Support Request</a></li>
-                            <li><a href="#">Knowledge Base</a></li>
-                            <li><a href="#">Flash Tutorial</a></li>
-                        </ul>
-                        </li>
-                    </ul>
-				</div>
-				<div class="three columns">
-                    <ul>
-                        <li class="widget-container">
-                        <h2 class="widget-title">Our Company</h2>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Affiliate Programs</a></li>
-                            <li><a href="#">What’s New</a></li>
-                            <li><a href="#">Our Infrastructure</a></li>
-                            <li><a href="#">FAQs</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                        </ul>
-                        </li>
-                    </ul>
-				</div>
-				<div class="three columns omega">
-                    <ul>
-                        <li class="widget-container contact">
-                        <h2 class="widget-title">Web Solution</h2>
-                        <ul>
-                            <li><a href="#">Web Solutions Overview</a></li>
-                            <li><a href="#">Email Marketing</a></li>
-                            <li><a href="#">Website Promotion</a></li>
-                            <li><a href="#">SSL Certificates</a></li>
-                            <li><a href="#">eCommerce Website</a></li>
-                            <li><a href="#">Web Hosting Design</a></li>
-                        </ul>
-                        
-                        </li>
-                    </ul>
-				</div>
-                <div class="clearfix"></div>   
-                <div id="copyright">
-                    Copyright ©2011 Quick Hosting.  Design by <a href="http://www.templatesquare.com/">Templatesquare.com</a>
-                </div><!--#footer-->
-                
-        	</div><!--.twelve.columns-->
-		</div><!--container-->
-    	<div class="clearfix"></div>
-	</div><!--#wrapper-footer-->
-    
-</div><!-- end #wrapper -->	
-
+	<?php include("include/footer.html") ?> 
 </body>
 </html>

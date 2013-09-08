@@ -43,8 +43,10 @@ $route['admin/(:any)'] = 'admin/home';
 $route['user/(:any)'] = 'user/account';
 */
 $route['default_controller'] = "home";
+
+
 $route['404_override'] = '';
-$controller_exceptions = array('admin','user','login');
+$controller_exceptions = array('admin','user');
 $route["^((?!\b".implode('\b|\b', $controller_exceptions)."\b).*)$"] = $route['default_controller'].'/$1';
 $route['admin'] = 'admin/home';
 
