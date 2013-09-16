@@ -9,23 +9,47 @@ class Edtior_model extends CI_Model {
         parent::__construct();
     }
 
+	/**
+	 * [get_projects gets the project information from the Database for given user]
+	 * @return [array] [project information]
+	 */
+	public function get_projects()
+	{
+		$this->db->where('user_id',$this->session->userdata('user_id'));
+		$this->db->where('sitename',$this->uri->segment(3));
+		$path = $this->db->get('projects');
+		return $path->row();	
+	}
 
-public function get_projects()
-{
-	# code...
-	$this->db->where('user_id',$this->session->userdata('user_id'));
-	$this->db->where('sitename',$this->uri->segment(3));
-	$path = $this->db->get('projects');
-	return$path->row();	
+	/**
+	 * [base_themepath gets original theme from DB]
+	 * @return [string] [project theme]
+	 */
+	public function base_themepath()
+	{
+		$path=$this->edtior_model->get_projects();
+		return $path->base_themepath;
+	}
+
 	
-}
-
-public function base_themepath()
-{
-	# code...
-	$path=$this->edtior_model->get_projects();
-	return $path->base_themepath;
-}
+	public function add_newpage()
+	{
+		if($this->uri->segment(3)) 
+		{
+			//Getting the original theme name from the DB based on user project.
+			$basepath = $this->edtior_model->base_themepath();
+			if ($this->input->post('pagename')) 
+			{
+				 $this->edtior_model->create_page($basepath);			
+			}
+			$data['files']=$this->edtior_model->getfilename("themes/".$basepath);
+			return $data;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
 
 public function create_page($basepath)
 {
@@ -106,7 +130,6 @@ public function change_title()
 
 
 public function page_rename()
-
 {
 
 	$filepath="userdata/".USERNAME."/".$this->uri->segment(3)."/";

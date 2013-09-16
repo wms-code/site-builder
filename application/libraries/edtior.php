@@ -50,7 +50,6 @@ class Edtior {
                     $mainmenu = str_replace($fromvar, $tovar,$mainmenu) ;
                 }
             }
-            TODO: adsf
             file_put_contents($themepath.'include/menu.html',$mainmenu);
         }
 

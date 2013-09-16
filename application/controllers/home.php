@@ -9,11 +9,14 @@ class Home extends MY_Controller {
 		parent::__construct();
 
         // Your own constructor code
-		$this->load->model('edtior_model');
+		$this->load->model('editor_model');
 		
 	}
 
-
+	/**
+	 * [Display the Web Board]
+	 * @return [type] [description]
+	 */
 	public function index()
 	{
 		$this->template->set('title', 'My website');
@@ -21,27 +24,23 @@ class Home extends MY_Controller {
 	}
 	
 
-	public function menu()
-	{
-
-		$this->template->set('title', 'My website');
-		$this->template->load('layouts/main', 'menu');
-	}
-
-
+	/**
+	 * [This is used when user adds the new page to project]
+	 * @return [type] [description]
+	 */
 	public function addpage()
 	{
-		
-		if ($this->uri->segment(3)) {
-			//Getting the original theme from the DB based on user project.
-			$basepath = $this->edtior_model->base_themepath();
-		if ($this->input->post('pagename')) 
+		if ($this->uri->segment(3))
 		{
-			 $this->edtior_model->create_page($basepath);			
-		}
-		$data['files']=$this->edtior_model->getfilename("themes/".$basepath);
-		//$this->template->set('title', 'My website',$data);
-		$this->load->view('addpage',$data);
+			//Getting the original theme from the DB based on user project.
+			$basepath = $this->editor_model->base_themepath();
+			if ($this->input->post('pagename')) 
+			{
+				 $this->editor_model->create_page($basepath);			
+			}
+			$data['files']=$this->editor_model->getfilenames("themes/".$basepath);
+			//$this->template->set('title', 'My website',$data);
+			$this->load->view('addpage',$data);
 		}
 		else
 		{ 
@@ -50,104 +49,116 @@ class Home extends MY_Controller {
 		}
 	}
 
-
+	/**
+	 * [List all the files in the selected project ]
+	 * @return [type] [description]
+	 */
 	public function pages()
 	{
 		// Change Title
 		if ($this->input->post('title')) 
 		{
-			$this->edtior_model->change_title();
+			$this->editor_model->change_title();
 		}
 		//page Rename
-		if ($this->input->post('page')) {
-		
-			$this->edtior_model->page_rename();
+		if ($this->input->post('page')) 
+		{
+			$this->editor_model->page_rename();
 			$target = base_url()."pages/". SALT ."/" .$this->uri->segment(3);
 			header("Location: " . $target);
 			exit(0);
 		}
 
 		//Get file name & Date & Page Title as a Array
-		if ($this->uri->segment(3)) {
-			$data['furl']=$this->uri->segment(3);
-			$filename=$this->edtior_model->getfilename("userdata/".USERNAME."/".$data['furl']);
-			if($filename === false){
-			show_404(); //Pages url  invaild !
-		}
-		foreach ($filename as  $value) {
-			$cdate=get_file_info("userdata/".USERNAME."/".$data['furl']."/$value");			
-			$fdate=date ("d/m/Y H:i",$cdate['date']);			
-			$fileurl="userdata/".USERNAME."/".$data['furl']."/$value";
-			$title=$this->edtior_model->gettitle($fileurl);
-			$filename=str_replace(".html","", $value);
-			$data['list'][]=array("fdate"=>"$fdate","filename"=>"$filename","title"=>"$title");
-		}
-
-		$this->template->set('title', 'My website');
-		$this->template->load('layouts/main', 'pages',$data);
-	}
-}
-/**
- * del page 
- * @return [redirect ] [redirect to current project folder]
- */
-public function	delpage()
-{
-	$fileurl='userdata/'.USERNAME."/".$this->uri->segment(3).'/'.$this->uri->segment(4);
-	if (file_exists($fileurl)) {
-		unlink($fileurl);
-		$target = base_url()."pages/".SALT."/".$this->uri->segment(3);
-		header("Location: " . $target);
-		exit(0);
-	}
-	else
-	{
-		// report a bug  file not found
-	}
-
-}
-
-
-
-
-public function	edit()
-{
-	$this->load->library('edtior');
-	$data['mytitle'] = "";
-	$data['themepath']=$themepath='userdata/'.USERNAME."/".$this->uri->segment(3).'/';
-	$filename = $this->uri->segment(4,'index.html');
-	$fileurl = $themepath.$filename;
-	$data['filecontents']='';
-	if($this->input->post('myedit'))
-	{
-		$content=$this->input->post('myedit');
-		if($this->edtior->savepages($content,$fileurl,$themepath))
+		if ($this->uri->segment(3)) 
 		{
-				
-		$target = base_url()."edit/".SALT."/".$this->uri->segment(3)."/".$this->uri->segment(4);
-		header("Location: " . $target);
-		exit(0);
-		}		
+			$data['furl']=$this->uri->segment(3);
+			$filename=$this->editor_model->getfilenames("userdata/".USERNAME."/".$data['furl']);
+			if($filename === false)
+			{
+			show_404(); //Pages url  invaild !
+			}
 		
+			foreach ($filename as  $value) 
+			{
+				$cdate=get_file_info("userdata/".USERNAME."/".$data['furl']."/$value");			
+				$fdate=date ("d/m/Y H:i",$cdate['date']);			
+				$fileurl="userdata/".USERNAME."/".$data['furl']."/$value";
+				$title=$this->editor_model->gettitle($fileurl);
+				$filename=str_replace(".html","", $value);
+				$data['list'][]=array("fdate"=>"$fdate","filename"=>"$filename","title"=>"$title");
+			}
+
+			$this->template->set('title', 'My website');
+			$this->template->load('layouts/main', 'pages',$data);
+		}
 	}
-	
 
-	//note : file_get_contents   must be html htmlspecialchars
-	if (file_exists($fileurl) && ""!=$this->uri->segment(3)) {
-		$data['filecontents']= htmlspecialchars(file_get_contents(base_url().$fileurl));
-		if (preg_match('/<title>(.+)<\/title>/',$data['filecontents'],$matches) && isset($matches[1] ))
-			$data['mytitle'] = $matches[1];	
-
-		$files=$this->edtior_model->getfilename('userdata/'.USERNAME."/".$this->uri->segment(3));
-		//Split an array into 5 value an array	
-		$data['files']=array_chunk($files, 5);		
+	/**
+	 * del page 
+	 * @return [redirect ] [redirect to current project folder]
+	 */
+	public function	delpage()
+	{
+		$fileurl='userdata/'.USERNAME."/".$this->uri->segment(3).'/'.$this->uri->segment(4);
+		if (file_exists($fileurl)) {
+			unlink($fileurl);
+			$target = base_url()."pages/".SALT."/".$this->uri->segment(3);
+			header("Location: " . $target);
+			exit(0);
+		}
+		else
+		{
+			// report a bug  file not found
+		}
 	}
-	
-	$this->template->set('title','Website builder');
-	$this->template->load('layouts/editpage','edit',$data);
-}
 
 
+
+	/**
+	 * [edit description]
+	 * @return [type] [description]
+	 */
+	public function	edit()
+	{
+		$this->load->library('edtior');
+		$data['mytitle'] = "";
+		$data['themepath']=$themepath='userdata/'.USERNAME."/".$this->uri->segment(3).'/';
+		$filename = $this->uri->segment(4,'index.html');
+		$fileurl = $themepath.$filename;
+		$data['filecontents']='';
+		if($this->input->post('myedit'))
+		{
+			$content=$this->input->post('myedit');
+			if($this->edtior->savepages($content,$fileurl,$themepath))
+			{
+					
+			$target = base_url()."edit/".SALT."/".$this->uri->segment(3)."/".$this->uri->segment(4);
+			header("Location: " . $target);
+			exit(0);
+			}	
+		}
+		
+
+		//note : file_get_contents   must be html htmlspecialchars
+		if (file_exists($fileurl) && ""!=$this->uri->segment(3)) {
+			$data['filecontents']= htmlspecialchars(file_get_contents(base_url().$fileurl));
+			if (preg_match('/<title>(.+)<\/title>/',$data['filecontents'],$matches) && isset($matches[1] ))
+				$data['mytitle'] = $matches[1];	
+
+			$files=$this->editor_model->getfilenames('userdata/'.USERNAME."/".$this->uri->segment(3));
+			//Split an array into 5 value an array	
+			$data['files']=array_chunk($files, 5);		
+		}
+		
+		$this->template->set('title','Website builder');
+		$this->template->load('layouts/editpage','edit',$data);
+	}
+
+	/**
+	 * [browsethemes description]
+	 * @return [type] [description]
+	 */
 	public function browsethemes()
 	{
 		$this->load->helper('directory');		
@@ -214,10 +225,6 @@ public function	edit()
 		$this->template->load('layouts/main', 'themes');
 		
 	}
-
-
-
-
 }
 
 /* End of file home.php */

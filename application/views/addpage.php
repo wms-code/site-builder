@@ -68,7 +68,7 @@
 							<span class="help-block">The "Page Name" is the URL-friendly version. It is usually all lowercase and contains only letters, numbers, and hyphens.</span>
 							
 							<label>Page Title:</label>
-							<input type="text" name="pagetitle" class="input-xlarge-fluid" placeholder="Category Name">							
+							<input type="text" name="pagetitle" id="pagetitle" class="input-xlarge-fluid" placeholder="Category Name">							
 							<span class="help-block">Define a title for your HTML document.</span>
 							
 							<label>Description:</label>
